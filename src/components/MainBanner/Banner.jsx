@@ -25,7 +25,7 @@ export const Banner = () => {
             </div>
         </div>
         <div className="banner-right">
-            <img src={heroImg} alt="" />
+            {/* <img src={heroImg} alt="" /> */}
         </div>
     </div>
   )
