@@ -1,7 +1,7 @@
 import React from 'react'
 // import handIcon from "../assets/img/hand_icon.png";
 import arrowIcon from "../assets/img/arrow.png";
-import heroImg from "../assets/img/hero_image.png";
+// import heroImg from "../assets/img/hero_image.png";
 import "./banner.css";
 
 export const Banner = () => {

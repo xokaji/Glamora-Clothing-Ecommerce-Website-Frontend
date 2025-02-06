@@ -22,5 +22,5 @@
 .popularItem{
     display: flex;
     margin-top: 10px;
-     gap: 30px;
+    gap: 30px;
 }
