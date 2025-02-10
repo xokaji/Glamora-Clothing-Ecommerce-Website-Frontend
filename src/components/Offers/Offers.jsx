@@ -1,6 +1,6 @@
 import React from 'react'
 import "./offers.css"
-import exclusive_image from "../assets/img/exclusive_image.png"
+import exclusive_image from "../assets/img/tr1.png"
 
 
 
@@ -8,13 +8,14 @@ export const Offers = () => {
   return (
     <div className="offers">
         <div className="offers-left">
-            <h1>Exclusive</h1>
-            <h1>Offers For You</h1>
+            <h1>Discover the latest</h1>
+            <h1>Women's fashion with</h1>
+            <h1>Exclusive collection</h1>
             <p>ONLY FOR BEST PRODUCTS SELLERS</p>
             <button>Check Now</button>
         </div>
         <div className="offers-right">
-            <img src={exclusive_image} alt=""/>
+            <img src={exclusive_image} alt="ex"/>
         </div>
     </div>
   )
