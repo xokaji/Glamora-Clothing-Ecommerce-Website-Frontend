@@ -1,35 +1,34 @@
-.offers{
+.manBanner{
     width :auto;
     height: 70vh;
     display: flex;
     margin: auto;
-    padding: 0px 140px;
-    margin-top: 50px;
+    padding: 0px 100px;
     margin-bottom: 100px;
-    background: linear-gradient(180deg, #c2c2c2 0%, #e1ffea22 60%);
+    background: linear-gradient(180deg, #fca4a8 0%, #78787822 60%);
 }
 
-.offers-left{
-    flex: 1;
+.manbanner-right{
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.offers-left h1{
+.manbanner-right h1{
     color: #171717;
     font-size: 55px;
     font-weight: 600;
 }
 
-.offers-left p{
+.manbanner-right p{
     color: #171717;
     font-size: 18px;
     font-weight: 600;
     margin-top: 20px;
 }
 
-.offers-left button{
+.manbanner-right button{
     width: 222px;
     height: 60px;
     border-radius: 35px;
@@ -42,22 +41,20 @@
     cursor:  pointer;
 }
 
-.offers-right{
+.manbanner-left{
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: start;
+    justify-content: flex-start;
 
 }
 
-.offers-right img{
+.manbanner-left img{
     height: 70vh;
 }
 
 @media(max-width: 768px){
-    .offers{
+    .manBanner{
         display: none;
     }
-
-
 }

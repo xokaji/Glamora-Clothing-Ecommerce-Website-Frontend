@@ -10,6 +10,11 @@ import { Link } from 'react-router-dom';
 export const Navbar = () => {
     const [menu, setMenu] = useState("shop");
     const [isOpen, setIsOpen] = useState(false);
+    const [dropDown, setDropDown] = useState(false);
+
+    const toggleDropDown = ()=>{
+        setDropDown(!dropDown);
+    }
 
     return (
         <div className="navBar">
@@ -32,7 +37,17 @@ export const Navbar = () => {
 
             <div className="navLogincart">
                 <Link to="/login"><AccountCircleOutlinedIcon className='navIcons' /></Link>
-                <Link to="/country"><LanguageOutlinedIcon className='navIcons' /></Link>
+                <div className="worldicon"
+                    onClick={toggleDropDown}><LanguageOutlinedIcon className='navIcons'/></div>
+                    {dropDown&&(
+                        <div className="listDropdown">
+                            <ul>
+                                <li>Sri Lanka</li>
+                                <li>France</li>
+                                <li>United States</li>
+                            </ul>
+                        </div>
+                    )}
                 <Link to="/cart"><AddShoppingCartOutlinedIcon className='navIcons' /></Link>
                 <div className="navCartCount">0</div>
             </div>

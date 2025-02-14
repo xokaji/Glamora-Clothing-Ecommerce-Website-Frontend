@@ -1,35 +1,35 @@
-.offers{
+.accessoriesBanner{
     width :auto;
     height: 70vh;
     display: flex;
     margin: auto;
     padding: 0px 140px;
     margin-top: 50px;
-    margin-bottom: 100px;
-    background: linear-gradient(180deg, #c2c2c2 0%, #e1ffea22 60%);
+    margin-bottom: 5 0px;
+    background: linear-gradient(180deg, #c7c7c7 0%, #b3ffca22 60%);
 }
 
-.offers-left{
+.accessories-left{
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.offers-left h1{
+.accessories-left h1{
     color: #171717;
     font-size: 55px;
     font-weight: 600;
 }
 
-.offers-left p{
+.accessories-left p{
     color: #171717;
     font-size: 18px;
     font-weight: 600;
     margin-top: 20px;
 }
 
-.offers-left button{
+.accessories-left button{
     width: 222px;
     height: 60px;
     border-radius: 35px;
@@ -42,7 +42,7 @@
     cursor:  pointer;
 }
 
-.offers-right{
+.accessories-right{
     flex: 1;
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@
 
 }
 
-.offers-right img{
+.accessories-right img{
     height: 70vh;
 }
 

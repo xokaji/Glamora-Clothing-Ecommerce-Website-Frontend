@@ -19,4 +19,4 @@ export const Newcollections = () => {
   )
 }
 
-//1.05.33
+

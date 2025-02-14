@@ -11,6 +11,8 @@ import kidsBanner from './components/assets/img/banner_kids.png'
 import womenbanner from './components/assets/img/banner_women.png'
 import { LoginSignUp } from './pages/LoginSignUp/LoginSignUp';
 
+import { Lognow } from './pages/LogNow/Lognow';
+
 
 
 function App() {
@@ -21,11 +23,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Shop/>}/>
         <Route path="/employee" element={<AddProduct/>}/>
+        <Route path='/lognow' element={<Lognow/>}/>
         <Route path="/login" element={<LoginSignUp/>}/>
         <Route path="men" element={<ShopCates shows={menBanner} category="men"/>}/>
         <Route path="women" element={<ShopCates shows={womenbanner} category="women"/>}/>
         <Route path="kids" element={<ShopCates shows={kidsBanner} category="kid"/>}/>
         <Route path="product" element={<Products/>}>
+        
         
           {/* <Route path="/:productID" element={<Products/>}/> */}
         </Route>

@@ -1,15 +1,14 @@
 import React from 'react'
-import './popular.css'
-import data_product from '../assets/img/data'
+import './gifts.css'
 import { Item } from '../Items/Item'
+import data_product from '../assets/img/data'
 
-
-export const Popular = () => {
+export const Gifts = () => {
   return (
-    <div className="popular">
-        <p className='restock'>WOMEN NEW +RESTOCK</p>
+    <div className='gifts'>
+        <p className='giftStock'>GIFT CARDS +SPECIALS</p>
         <hr/>
-        <div className="popularItem">
+        <div className="giftItem">
             {data_product.map((item, x)=>{
                 return <Item key={x} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}  />
             })}
