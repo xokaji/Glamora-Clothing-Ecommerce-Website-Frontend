@@ -1,35 +1,79 @@
-import React, { useContext } from 'react'
-import './shopcategories.css'
-import { ShopConetxt } from '../../context/ShopContext'
-import dropdownIcon from '../../components/assets/img/dropdown_icon.png'
-import { Item } from '../../components/Items/Item'
-// import all_product from '../../components/assets/img/all_product'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { getProductsByCategory } from "../../services/api";
+import "./shopcategories.css";
+import { Item } from "../../components/Items/Item";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
-export const ShopCates = (props) => {
-  const {all_product} = useContext(ShopConetxt)
+export const ShopCates = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const location = useLocation();
+  const category = new URLSearchParams(location.search).get("category");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (category) {
+        try {
+          setLoading(true);
+          const data = await getProductsByCategory(category);
+          
+          // delay ekak athi karanwa spinner eka show karanna
+          setTimeout(() => {
+            setProducts(data);
+            setLoading(false);
+          }, 500); 
+          
+        } catch (err) {
+          console.error("Error fetching products:", err);
+          setError(`Failed to load products. Error: ${err.message}`);
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [category]);
+
   return (
     <div className="shopCategories">
-        {/* <img className='shopCategory-banner' src={props.shows} alt="banners"/> */}
-        <div className="shopCategory-indexSort">
-          <p>
-            <span>Showing 1-12</span> out of 36 products
-          </p>
-          <div className="shopCategory-sort">
-            Sort by <img src={dropdownIcon} alt="sort"/>
-          </div>
+      <div className="shopCategory-indexSort">
+        <p>
+          <span>Showing {products.length}</span> products in {category}
+        </p>
+      </div>
+
+      {loading ? (
+        <div className="loading-container">
+          <ScaleLoader color="#36D7B7" height={35} width={5} />
+          <p>Loading products...</p>
         </div>
+      ) : error ? (
+        <p className="error">{error}</p>
+      ) : (
         <div className="shopCategory-products">
-          {all_product.map((item, x)=>{
-              if(props.category === item.category){
-                return <Item key={x} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
-              }else{
-                return null;
-              }
-          })}
+          {products.length > 0 ? (
+            products.map((item, index) => (
+              <Item
+                key={`${item.productName}-${item.productCategory}-${index}`}
+                ProductId={item.productId}
+                ProductName={item.productName}
+                ProductImage={item.productImage}
+                ProductPrice={item.productPrice}
+                ProductQuantity={item.productQuantity}
+              />
+            ))
+          ) : (
+            <p className="no-products">No products found in this category.</p>
+          )}
         </div>
-        <div className="shopcategory-loadmore">
-          Explore More
-        </div>
+      )}
+
+      <div className="shopcategory-loadmore">Explore More</div>
     </div>
-  )
-}
+  );
+};
