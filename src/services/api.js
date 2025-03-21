@@ -59,28 +59,32 @@ export const getProtectedData = async () => {
   }
 };
 
-export const getAllProducts = async () =>{
-  try{
-    const response = await api.get('/products');
+export const getAllProducts = async () => {
+  try {
+    const response = await api.get('/product/get-products');
     return response.data;
-  }catch(error){
+  } catch (error) {
     console.error('Error fetching products:', error);
     throw error;
   }
-}
+};
 
-export const getProductsByCategory = async(category) =>{
-  try{
-    const response = await api.get(`/Product/category/${category}`);
+export const getProductsByCategory = async (categoryId) => {
+  try {
+    const response = await api.get(`/product/category/${categoryId}`);
     return response.data;
-  }catch(error){
-    console.error('Error fetching products:', error);
+  } catch (error) {
+    console.error('Error fetching products by category:', error);
     throw error;
   }
-}
+};
 
-export const getWomenProducts = async () => getProductsByCategory("MEN");
-export const getMenProducts = async () => getProductsByCategory("WOMEN");
-export const getAccessoriesProducts = async () => getProductsByCategory("ACCESSORIES");
-
-
+export const getProductById = async (productId) => {
+  try {
+    const response = await api.get(`/product/${productId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product by ID:', error);
+    throw error;
+  }
+};

@@ -2,17 +2,15 @@ import React from 'react';
 import "./item.css";
 
 export const Item = (props) => {
+  const { ProductImage, ProductName, ProductPrice, ProductQuantity, onProductClick } = props;
+
   return (
-    <div className="item">
-      <img src={props.ProductImage} alt={props.ProductName} />
-      <p>{props.ProductName}</p>
+    <div className="item" onClick={onProductClick}>
+      <img src={ProductImage} alt={ProductName} />
+      <p>{ProductName}</p>
       <div className="itemPrices">
-        <div className="newPrice">
-            Rs.{props.ProductPrice} || "NAAA"
-        </div>
-        <div className="oldPrice">
-            Rs.{props.ProductQuantity}
-        </div>
+        <div className="newPrice">Rs.{ProductPrice}</div>
+        <div className="oldPrice">Rs.{ProductQuantity}</div>
       </div>
     </div>
   );
