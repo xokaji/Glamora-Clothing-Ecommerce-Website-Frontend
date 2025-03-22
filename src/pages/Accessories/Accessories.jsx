@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./popular.css";
-import { getMostRecentProductsByCategory } from "../../services/api"; 
+import "./accessories.css";
+import { getProductsByCategory } from "../../services/api"; 
 
-export const Popular = () => {
+export const Accessories = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ export const Popular = () => {
     const fetchProducts = async () => {
       try {
 
-        const response = await getMostRecentProductsByCategory(1, 2);
+        const response = await getProductsByCategory(2);
         setProducts(response);
       } catch (error) {
         console.error('Error fetching products:', error);

@@ -28,8 +28,8 @@ export const Navbar = () => {
 
             <ul className={`navLinks ${isOpen ? 'open' : ''}`}>
                 <li onClick={() => { setMenu("shop"); setIsOpen(false); }}><Link to="/">HOME</Link></li>
-                <li onClick={() => { setMenu("MEN"); setIsOpen(false); }}><Link to="/category?category=MEN">MEN</Link></li>
-                <li onClick={() => { setMenu("WOMEN"); setIsOpen(false); }}><Link to="/category?category=WOMEN">WOMEN</Link></li>
+                <li onClick={() => { setMenu("MEN"); setIsOpen(false); }}><Link to="/menProducts">MEN</Link></li>
+                <li onClick={() => { setMenu("WOMEN"); setIsOpen(false); }}><Link to="/womenProducts">WOMEN</Link></li>
                 <li onClick={() => { setMenu("accessories"); setIsOpen(false); }}><Link to="/accessories">ACCESSORIES</Link></li>
                 <li onClick={() => { setMenu("gifts"); setIsOpen(false); }}><Link to="/gifts">GIFTS</Link></li>
             </ul>

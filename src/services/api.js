@@ -88,3 +88,15 @@ export const getProductById = async (productId) => {
     throw error;
   }
 };
+
+export const getMostRecentProductsByCategory = async (categoryId, limit = 10) => {
+  try {
+    const response = await api.get(`/product/most-recent/category/${categoryId}`, {
+      params: { limit}, 
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching most recent products by category:', error);
+    throw error;
+  }
+};
