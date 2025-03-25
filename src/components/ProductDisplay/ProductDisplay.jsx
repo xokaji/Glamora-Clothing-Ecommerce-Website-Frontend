@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./productDisplay.css";
 import { getProductById } from "../../services/api";
 
 const ProductDisplay = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -19,6 +22,27 @@ const ProductDisplay = () => {
 
     fetchProduct();
   }, [productId]);
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size");
+      return;
+    }
+
+    const cartItem = {
+      ...product,
+      selectedSize,
+      quantity
+    };
+    
+
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const updatedCart = [...existingCart, cartItem];
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    
+
+    navigate('/cart');
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -40,20 +64,29 @@ const ProductDisplay = () => {
         <p className="product-desc">{product.productDescription}</p>
         
         <p className="product-color">Available Color: Jet Black</p>
-        {/* <div className="product-thumbnails">
-          <img src={`http://localhost:5029/${product.productImageUrl}`} alt="Black" className="color-option" />
-        </div> */}
 
         <p className="product-size">Available Size:</p>
         <div className="size-options">
-          <button className="size-btn">S</button>
-          <button className="size-btn">M</button>
-          <button className="size-btn">L</button>
-          <button className="size-btn">XL</button>
-          <button className="size-btn">2XL</button>
+          {['S', 'M', 'L', 'XL', '2XL'].map(size => (
+            <button 
+              key={size}
+              className={`size-btn ${selectedSize === size ? 'selected' : ''}`}
+              onClick={() => setSelectedSize(size)}
+            >
+              {size}
+            </button>
+          ))}
         </div>
 
-        <button className="add-to-cart">🛒 ADD TO CART</button>
+        <div className="quantity-selector">
+          <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+        </div>
+
+        <button className="add-to-cart" onClick={handleAddToCart}>
+          🛒 ADD TO CART
+        </button>
 
         <div className="shipping-info">
           <p>🚚 Free shipping on orders over Rs.20,000</p>

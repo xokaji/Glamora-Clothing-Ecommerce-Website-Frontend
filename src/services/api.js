@@ -100,3 +100,4 @@ export const getMostRecentProductsByCategory = async (categoryId, limit = 10) =>
     throw error;
   }
 };
+
