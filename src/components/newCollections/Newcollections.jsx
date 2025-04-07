@@ -35,7 +35,7 @@ export const Newcollections = () => {
 
   return (
     <div className="home">
-      <h1>Most Recent Women's Products</h1>
+      <p>Recent Men+Stock</p>
       <div className="productGrid">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
@@ -47,7 +47,7 @@ export const Newcollections = () => {
               }}
             />
             <p>{product.productName}</p>
-            <p><strong>Price:</strong> Rs.{product.productPrice}</p>
+            <p><strong>LKR</strong> {product.productPrice}</p>
           </Link>
         ))}
       </div>

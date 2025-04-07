@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./men.css";
 import { getProductsByCategory } from "../../services/api"; 
+import { ScaleLoader } from "react-spinners"; 
 
 export const Men = () => {
   const [products, setProducts] = useState([]);
@@ -9,10 +10,12 @@ export const Men = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-
-        const response = await getProductsByCategory(0);
+        const [response] = await Promise.all([
+          getProductsByCategory(0),
+          new Promise(resolve => setTimeout(resolve, 1000)) 
+        ]);
         setProducts(response);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -22,11 +25,16 @@ export const Men = () => {
       }
     };
 
-    fetchProducts();
-  }, []); 
+    fetchData();
+  }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loadingContainer">
+        <ScaleLoader color="#36d7b7" height={35} />
+        <p>Loading Men Collection....</p>
+      </div>
+    );
   }
 
   if (error) {
@@ -35,7 +43,7 @@ export const Men = () => {
 
   return (
     <div className="home">
-      <h1>Most Recent Women's Products</h1>
+      <h1>Men Collection</h1>
       <div className="productGrid">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
@@ -47,7 +55,7 @@ export const Men = () => {
               }}
             />
             <p>{product.productName}</p>
-            <p><strong>Price:</strong> Rs.{product.productPrice}</p>
+            <p><strong>LKR</strong> {product.productPrice}</p>
           </Link>
         ))}
       </div>

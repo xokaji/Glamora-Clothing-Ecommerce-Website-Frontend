@@ -5,7 +5,7 @@
     margin: auto;
     padding: 0px 140px;
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     background: linear-gradient(180deg, #c2c2c2 0%, #e1ffea22 60%);
 }
 
@@ -41,6 +41,13 @@
     margin-top: 30px;
     cursor:  pointer;
 }
+
+.offers-left .womenLink{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+
 
 .offers-right{
     flex: 1;

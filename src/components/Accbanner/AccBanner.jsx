@@ -1,5 +1,8 @@
 import React from 'react'
 import "./abanner.css"
+import hand_bag from "../assets/img/pngwing.com.png"
+import { Link } from 'react-router-dom'
+
 
 export const AccBanner = () => {
   return (
@@ -9,10 +12,10 @@ export const AccBanner = () => {
             <h1>Define your style &</h1>
             <h1>Touch of Luxury</h1>
             <p>COMPLETE YOUR LOOK WITH PREMIUM ACCESSORIES</p>
-            <button>Check Now</button>
+            <button><Link className='accessories' to="/accessories">Check Now</Link></button>
         </div>
-        <div className="accessories-right">
-            <img src="" alt="accessoriesImg"/>
+        <div className="offers-right">
+            <img src={hand_bag} alt="ex"/>
         </div>
     </div>
   )

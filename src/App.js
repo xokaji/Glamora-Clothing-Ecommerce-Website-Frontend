@@ -34,11 +34,8 @@ function App() {
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/menProducts" element={<Men />} />
           <Route path="/womenProducts" element={<Women />} />
-          <Route path="/accesorries" element={<Accessories/>} />
+          <Route path="/accessories" element={<Accessories/>} />
           <Route path="/gifts" element={<GiftCards />} />
-
-      
-   
           <Route path="*" element={<h1>Not Found</h1>} />
           
         </Routes>

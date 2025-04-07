@@ -1,6 +1,7 @@
 import React from 'react'
 import './manbanner.css'
 import manBanner from '../assets/img/manBanner2.png'
+import { Link } from 'react-router-dom'
 export const Manbanner = () => {
   return (
     <div className='manBanner'>
@@ -12,7 +13,7 @@ export const Manbanner = () => {
             <h1>Trendy outfits for</h1>
             <h1>The modern man</h1>
             <p>DISCOVER THE LATEST MEN'S FASHION</p>
-            <button>Check Now</button>
+            <button><Link className='menLink' to="/menProducts">Check Now</Link></button>
         </div>
     </div>
   )

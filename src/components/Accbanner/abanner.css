@@ -5,7 +5,7 @@
     margin: auto;
     padding: 0px 140px;
     margin-top: 50px;
-    margin-bottom: 5 0px;
+    margin-bottom: 20px;
     background: linear-gradient(180deg, #c7c7c7 0%, #b3ffca22 60%);
 }
 
@@ -40,6 +40,12 @@
     font-weight: 500;
     margin-top: 30px;
     cursor:  pointer;
+}
+
+.accessories-left .accessories{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
 }
 
 .accessories-right{

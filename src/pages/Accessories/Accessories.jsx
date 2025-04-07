@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./accessories.css";
 import { getProductsByCategory } from "../../services/api"; 
+import { ScaleLoader } from "react-spinners";
 
 export const Accessories = () => {
   const [products, setProducts] = useState([]);
@@ -9,25 +10,32 @@ export const Accessories = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-
-        const response = await getProductsByCategory(2);
-        setProducts(response);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        const fetchData = async () => {
+          try {
+            const [response] = await Promise.all([
+              getProductsByCategory(3),
+              new Promise(resolve => setTimeout(resolve, 1000)) 
+            ]);
+            setProducts(response);
+          } catch (error) {
+            console.error('Error fetching products:', error);
+            setError(error.message);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
+      }, []);
+  
+    if (loading) {
+        return (
+          <div className="loadingContainer">
+            <ScaleLoader color="#36d7b7" height={35} />
+            <p>Loading Accessories Collection....</p>
+          </div>
+        );
       }
-    };
-
-    fetchProducts();
-  }, []); 
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -47,7 +55,7 @@ export const Accessories = () => {
               }}
             />
             <p>{product.productName}</p>
-            <p><strong>Price:</strong> Rs.{product.productPrice}</p>
+            <p><strong>LKR</strong> {product.productPrice}</p>
           </Link>
         ))}
       </div>

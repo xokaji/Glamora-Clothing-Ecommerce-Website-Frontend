@@ -12,7 +12,7 @@ export const Popular = () => {
     const fetchProducts = async () => {
       try {
 
-        const response = await getMostRecentProductsByCategory(1, 2);
+        const response = await getMostRecentProductsByCategory(1, 4);
         setProducts(response);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -35,7 +35,7 @@ export const Popular = () => {
 
   return (
     <div className="home">
-      <h1>Most Recent Women's Products</h1>
+      <p id="newWomen">Recent Women+Stock</p>
       <div className="productGrid">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
@@ -47,7 +47,7 @@ export const Popular = () => {
               }}
             />
             <p>{product.productName}</p>
-            <p><strong>Price:</strong> Rs.{product.productPrice}</p>
+            <p><strong>LKR</strong> {product.productPrice}</p>
           </Link>
         ))}
       </div>

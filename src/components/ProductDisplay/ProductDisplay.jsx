@@ -60,7 +60,7 @@ const ProductDisplay = () => {
         <h1 className="product-title">{product.productName}</h1>
         <p className="product-price">LKR {product.productPrice}</p>
         <p className="product-category">{product.productQuantity}</p>
-        <span className="product-badge">REGULAR FIT</span>
+
         <p className="product-desc">{product.productDescription}</p>
         
         <p className="product-color">Available Color: Jet Black</p>
@@ -94,6 +94,7 @@ const ProductDisplay = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

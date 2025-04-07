@@ -4,7 +4,8 @@
     display: flex;
     margin: auto;
     padding: 0px 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     background: linear-gradient(180deg, #fca4a8 0%, #78787822 60%);
 }
 
@@ -39,6 +40,12 @@
     font-weight: 500;
     margin-top: 30px;
     cursor:  pointer;
+}
+
+.manbanner-right .menLink{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
 }
 
 .manbanner-left{
