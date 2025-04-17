@@ -71,7 +71,7 @@ export const LoginSignUp = () => {
         </form>
         <p className='loginsignup-login'>
           Already have an Account?{' '}
-          <Link className="secondBtn" to="/lognow">Login Now</Link>
+          <Link className="secondBtn" to="/lognow">Login </Link>
         </p>
         <div className="loginsignup-agree">
           <input

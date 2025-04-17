@@ -15,6 +15,7 @@ import { Men } from './pages/Men/Men';
 import { Women } from './pages/Women/Women';
 import { GiftCards } from './pages/GiftCards/GiftCards';
 import { Accessories } from './pages/Accessories/Accessories';
+import Profile from './pages/Profile/Profile';
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/employee" element={<AddProduct />} />
           <Route path="/lognow" element={<Lognow />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/menProducts" element={<Men />} />

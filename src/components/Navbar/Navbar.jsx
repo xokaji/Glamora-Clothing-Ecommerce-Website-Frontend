@@ -19,7 +19,7 @@ export const Navbar = () => {
     return (
         <div className="navBar">
             <div className="navLogo">
-                <Link className='loGo' to=""><p>GLAMORA</p></Link>
+                <Link className='loGo' to="" id='nav'><p>GLAMORA</p></Link>
             </div>
             
             <div className="menuIcon" onClick={() => setIsOpen(!isOpen)}>
