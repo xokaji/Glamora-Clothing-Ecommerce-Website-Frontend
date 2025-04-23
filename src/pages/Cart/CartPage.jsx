@@ -47,68 +47,73 @@ const CartPage = () => {
       </p>
 
       {cartItems.length === 0 ? (
-        <div className="empty-cart">
-          <p>Your cart is empty</p>
-          <button className="continue-shopping" onClick={continueShopping}>
-            CONTINUE SHOPPING
+  <div className="empty-cart">
+    <p>Your cart is empty</p>
+    <button className="continue-shopping" onClick={continueShopping}>
+      CONTINUE SHOPPING
+    </button>
+  </div>
+) : (
+  <>
+    <div className="cart-items-scroll">
+      {cartItems.map((item, index) => (
+        <div className="cart-item" key={index}>
+          <img 
+            src={`http://localhost:5029/${item.productImageUrl}`} 
+            alt={item.productName} 
+            className="cart-item-img" 
+          />
+          <div className="cart-item-details">
+            <h3 className="item-name">{item.productName}</h3>
+            <p className="item-desc">Jet Black / {item.selectedSize}</p>
+            <p className="cart-item-price">LKR {item.productPrice}</p>
+          </div>
+          <div className="cart-item-quantity">
+            <button 
+              className="quantity-btn" 
+              onClick={() => updateQuantity(index, item.quantity - 1)}
+            >
+              -
+            </button>
+            <span className="quantity">{item.quantity}</span>
+            <button 
+              className="quantity-btn" 
+              onClick={() => updateQuantity(index, item.quantity + 1)}
+            >
+              +
+            </button>
+          </div>
+          <button 
+            className="remove-item" 
+            onClick={() => removeItem(index)}
+          >
+            ✖
           </button>
         </div>
-      ) : (
-        <>
-          {cartItems.map((item, index) => (
-            <div className="cart-item" key={index}>
-              <img 
-                src={`http://localhost:5029/${item.productImageUrl}`} 
-                alt={item.productName} 
-                className="cart-item-img" 
-              />
-              <div className="cart-item-details">
-                <h3 className="item-name">{item.productName}</h3>
-                <p className="item-desc">Jet Black / {item.selectedSize}</p>
-                <p className="cart-item-price">LKR {item.productPrice}</p>
-              </div>
-              <div className="cart-item-quantity">
-                <button 
-                  className="quantity-btn" 
-                  onClick={() => updateQuantity(index, item.quantity - 1)}
-                >
-                  -
-                </button>
-                <span className="quantity">{item.quantity}</span>
-                <button 
-                  className="quantity-btn" 
-                  onClick={() => updateQuantity(index, item.quantity + 1)}
-                >
-                  +
-                </button>
-              </div>
-              <button 
-                className="remove-item" 
-                onClick={() => removeItem(index)}
-              >
-                ✖
-              </button>
-            </div>
-          ))}
+      ))}
+    </div>
 
-          <textarea
-            className="cart-note"
-            placeholder="Leave a note with your order"
-          ></textarea>
+    <textarea
+      className="cart-note"
+      placeholder="Leave a note with your order"
+    ></textarea>
 
-          <div className="cart-total">
-            <p className="total-label">Total</p>
-            <p className="cart-total-price">LKR {calculateTotal()}</p>
-          </div>
+    <div className="cart-total">
+      <p className="total-label">Total</p>
+      <p className="cart-total-price">LKR {calculateTotal()}</p>
+    </div>
+      <div className="btnstwo">
+      <Link to="/checkout">
+      <button className="checkout-btn">CHECKOUT</button>
+    </Link>
+    <button className="continue-shopping" onClick={continueShopping}>
+      CONTINUE SHOPPING
+    </button>
+      </div>
+    
+  </>
+)}
 
-          <Link to="/checkout">
-            <button className="checkout-btn">CHECKOUT</button>
-          </Link>
-          <button className="continue-shopping" onClick={continueShopping}>
-            CONTINUE SHOPPING
-          </button>
-        </>
-      )}
     </div>
   );
 };

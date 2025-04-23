@@ -54,7 +54,7 @@ const CheckoutPage = () => {
 
     localStorage.removeItem('cart');
 
-    navigate('/order-confirmation');
+    navigate('/');
   };
 
   if (cartItems.length === 0) {
@@ -223,10 +223,12 @@ const CheckoutPage = () => {
             <h3>Total: LKR {calculateTotal().toFixed(2)}</h3>
           </div>
         </div>
-
+        <div className="subButton">
         <button type="submit" className="proceed-payment">
           Proceed to Payment
         </button>
+        </div>
+        
       </form>
     </div>
   );

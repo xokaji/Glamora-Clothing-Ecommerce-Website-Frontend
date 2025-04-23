@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './navbar.css';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
@@ -6,8 +6,13 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+
 
 export const Navbar = () => {
+
+    const { cartItems } = useContext(CartContext);
+    
     const [menu, setMenu] = useState("shop");
     const [isOpen, setIsOpen] = useState(false);
     const [dropDown, setDropDown] = useState(false);
@@ -48,7 +53,7 @@ export const Navbar = () => {
                         </div>
                     )}
                 <Link to="/cart"><AddShoppingCartOutlinedIcon className='navIcons' /></Link>
-                <div className="navCartCount">0</div>
+                <div className="navCartCount">{cartItems.length}</div>
             </div>
         </div>
     );

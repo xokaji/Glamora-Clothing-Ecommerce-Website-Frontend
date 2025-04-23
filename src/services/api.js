@@ -101,3 +101,19 @@ export const getMostRecentProductsByCategory = async (categoryId, limit = 10) =>
   }
 };
 
+const getChatResponse = async (userMessage) => {
+  try {
+    const response = await fetch("http://localhost:5029/api/chat/GetResponse", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userMessage),
+    });
+
+    const data = await response.json();
+    console.log("ChatGPT response:", data.response);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};

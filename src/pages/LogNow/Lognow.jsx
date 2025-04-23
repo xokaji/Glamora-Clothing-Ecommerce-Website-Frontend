@@ -11,7 +11,7 @@ export const Lognow = () => {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
-  // Check if user is already logged in
+
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -118,7 +118,7 @@ export const Lognow = () => {
         </form>
         <p className='loginsignup-login'>
           Haven't created an account?{' '}
-          <Link className="secondBtn" to="/register">Click Here</Link> 
+          <Link className="secondBtn" to="/login">Click Here</Link> 
         </p>
         <div className="loginsignup-agree">
           <p>Welcome back & Happy Shopping!</p>

@@ -2,7 +2,6 @@ import './App.css';
 import { Navbar } from './components/Navbar/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Shop } from './pages/Shop/Shop';
-
 import AddProduct from './components/products/AddProduct';
 import { Footer } from './components/Footer/Footer';
 import { LoginSignUp } from './pages/LoginSignUp/LoginSignUp';
@@ -16,12 +15,13 @@ import { Women } from './pages/Women/Women';
 import { GiftCards } from './pages/GiftCards/GiftCards';
 import { Accessories } from './pages/Accessories/Accessories';
 import Profile from './pages/Profile/Profile';
-
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
   return (
     <div>
+      <CartProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -39,10 +39,10 @@ function App() {
           <Route path="/accessories" element={<Accessories/>} />
           <Route path="/gifts" element={<GiftCards />} />
           <Route path="*" element={<h1>Not Found</h1>} />
-          
         </Routes>
         <Footer />
       </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }

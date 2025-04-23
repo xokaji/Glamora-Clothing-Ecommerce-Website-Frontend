@@ -61,7 +61,7 @@
     height: 70vh;
 }
 
-@media(max-width: 768px){
+@media(max-width: 1500px){
     .offers{
         display: none;
     }
