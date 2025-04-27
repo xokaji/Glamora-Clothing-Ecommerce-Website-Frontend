@@ -12,8 +12,14 @@
 
 .product-gallery {
   flex: 1 1 350px;
-  max-width: 500px;
+  max-width: 400px;
+  background-color: #ffffff; 
+  padding: 1rem;
+  border-radius: 10px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s ease;
 }
+
 
 .main-img {
   width: 100%;
@@ -38,7 +44,7 @@
   height: 60px;
   object-fit: cover;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   cursor: pointer;
   transition: transform 0.3s;
 }

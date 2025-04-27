@@ -1,0 +1,50 @@
+.searchBarContainer {
+    text-align: center;
+    margin: 80px 0px 20px 0px;
+   
+  }
+  .searchBar {
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: 20px;
+  }
+  
+  .searchBar:focus {
+    border-color: #ff4141;
+  }
+  
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .productCard {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .productCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .productCard p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .productCard strong {
+    color: #36d7b7;
+  }
+  
