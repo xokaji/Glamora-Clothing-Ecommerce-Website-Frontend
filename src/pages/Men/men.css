@@ -8,3 +8,22 @@
     color: #555;
   }
   
+
+  .searchBarContainer {
+    text-align: center;
+    margin: 80px 0px 20px 0px;
+  }
+  
+  .searchBar {
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .searchBar:focus {
+    border-color: #ff4141;
+  }
+  

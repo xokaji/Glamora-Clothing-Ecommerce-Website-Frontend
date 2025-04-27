@@ -6,8 +6,10 @@ import { ScaleLoader } from "react-spinners";
 
 export const Men = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +19,7 @@ export const Men = () => {
           new Promise(resolve => setTimeout(resolve, 1000)) 
         ]);
         setProducts(response);
+        setFilteredProducts(response); 
       } catch (error) {
         console.error('Error fetching products:', error);
         setError(error.message);
@@ -27,6 +30,22 @@ export const Men = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+
+    if (searchQuery.trim()) {
+      const filtered = products.filter(product =>
+        product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [searchQuery, products]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   if (loading) {
     return (
@@ -43,21 +62,36 @@ export const Men = () => {
 
   return (
     <div className="home">
-      <h1>Men Collection</h1>
+      {/* Search Bar */}
+      <div className="searchBarContainer">
+        <input
+          type="text"
+          placeholder="Search for men products..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="searchBar"
+        />
+      </div>
+
+      {/* <h1>Accessories Collection</h1> */}
       <div className="productGrid">
-        {products.map((product) => (
-          <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
-            <img
-              src={`http://localhost:5029/${product.productImageUrl}`}
-              alt={product.productName}
-              onError={(e) => {
-                e.target.src = "/images/fallback.jpg"; 
-              }}
-            />
-            <p>{product.productName}</p>
-            <p><strong>LKR</strong> {product.productPrice}</p>
-          </Link>
-        ))}
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
+              <img
+                src={`http://localhost:5029/${product.productImageUrl}`}
+                alt={product.productName}
+                onError={(e) => {
+                  e.target.src = "/images/fallback.jpg"; 
+                }}
+              />
+              <p>{product.productName}</p>
+              <p><strong>LKR</strong> {product.productPrice}</p>
+            </Link>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
     </div>
   );
