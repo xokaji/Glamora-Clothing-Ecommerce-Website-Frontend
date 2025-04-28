@@ -10,6 +10,7 @@ import image6 from "../../../src/components/assets/img/hero/hero8.jpg";
 import image7 from "../../../src/components/assets/img/hero/hero9.jpg";
 
 
+
 const images = [image1, image3, image4, image5, image6, image7];
 
 export const Banner = () => {

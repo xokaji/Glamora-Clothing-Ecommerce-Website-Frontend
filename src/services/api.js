@@ -166,71 +166,119 @@ export const addItemToCart = async (productId, quantity) => {
   }
 };
 
-// Function to remove an item from the cart
-export const removeItemFromCart = async (cartItemId) => {
+///////////////
+
+
+
+// Get product by name
+export const getProductByName = async (productName) => {
   try {
-    const token = localStorage.getItem('jwtToken');
-    if (!token) {
-      throw new Error('Unauthorized: No JWT token found.');
-    }
-
-    await axios.delete(`${API_URL}/items/${cartItemId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return { message: 'Item removed from cart' }; // Return success message
+    const response = await axios.get(`${API_URL}/name/${productName}`);
+    return response.data;
   } catch (error) {
-    console.error('Error removing item from cart:', error);
+    console.error(`Error getting product with name ${productName}:`, error);
     throw error;
   }
 };
 
 
-export const updateCartItemQuantity = async (cartItemId, quantity) => {
+
+// Create a new product
+export const createProduct = async (productData) => {
   try {
-    const token = localStorage.getItem('jwtToken');
-    if (!token) {
-      throw new Error('Unauthorized: No JWT token found.');
-    }
-
-    const cartItemDto = {
-      quantity: quantity,
-    };
-
-    await axios.put(`${API_URL}/items/${cartItemId}`, cartItemDto, {
+    const response = await axios.post(API_URL, productData, {
       headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data', // Assuming you're sending data in form-data format
       },
     });
-
-    return { message: 'Item quantity updated' }; // Return success message
+    return response.data;
   } catch (error) {
-    console.error('Error updating item quantity in cart:', error);
+    console.error('Error creating product:', error);
     throw error;
   }
 };
 
-// Function to clear the cart
-export const clearCart = async () => {
+// Update an existing product
+export const updateProduct = async (productId, productData) => {
   try {
-    const token = localStorage.getItem('jwtToken');
-    if (!token) {
-      throw new Error('Unauthorized: No JWT token found.');
-    }
-
-    await axios.delete(`${API_URL}/clear`, {
+    const response = await axios.put(`${API_URL}/${productId}`, productData, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data', // Assuming you're sending data in form-data format
       },
     });
-
-    return { message: 'Cart cleared successfully' }; 
+    return response.data;
   } catch (error) {
-    console.error('Error clearing cart:', error);
+    console.error(`Error updating product with ID ${productId}:`, error);
     throw error;
   }
 };
 
+// Delete a product by ID
+export const deleteProduct = async (productId) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${productId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error deleting product with ID ${productId}:`, error);
+    throw error;
+  }
+};
+
+// Apply a discount to a product
+export const applyDiscount = async (productId, discount) => {
+  try {
+    const response = await axios.put(`${API_URL}/discount/${productId}/${discount}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error applying discount to product with ID ${productId}:`, error);
+    throw error;
+  }
+};
+
+// Search products based on filters
+export const searchProducts = async (filters) => {
+  try {
+    const { name, minPrice, maxPrice, categoryId } = filters;
+    const response = await axios.get(`${API_URL}/search`, {
+      params: { name, minPrice, maxPrice, categoryId },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error searching products:', error);
+    throw error;
+  }
+};
+
+// Get new women products (limit = 1)
+export const getNewWomenProducts = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/new-women`);
+    return response.data;
+  } catch (error) {
+    console.error('Error getting new women products:', error);
+    throw error;
+  }
+};
+
+
+// Update product quantity
+export const updateProductQuantity = async (productId, quantityChange) => {
+  try {
+    const response = await axios.put(`${API_URL}/update-quantity/${productId}`, quantityChange);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating quantity for product with ID ${productId}:`, error);
+    throw error;
+  }
+};
+
+// Decrease product quantity
+export const decreaseProductQuantity = async (productId, quantity) => {
+  try {
+    const response = await axios.put(`${API_URL}/decrease-quantity/${productId}`, quantity);
+    return response.data;
+  } catch (error) {
+    console.error(`Error decreasing quantity for product with ID ${productId}:`, error);
+    throw error;
+  }
+};

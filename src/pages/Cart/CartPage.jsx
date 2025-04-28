@@ -34,7 +34,7 @@ const CartPage = () => {
   };
 
   const continueShopping = () => {
-    navigate(-1); 
+    navigate(-3); 
   };
 
   return (
