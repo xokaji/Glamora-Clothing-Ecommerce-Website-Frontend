@@ -4,14 +4,14 @@
    
   }
   .searchBar {
-    width: 40%;
+    width: 50%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
-    border-radius: 20px;
+
   }
   
   .searchBar:focus {
@@ -20,7 +20,7 @@
   
   .productGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
   }
@@ -48,3 +48,7 @@
     color: #36d7b7;
   }
   
+  .home input::placeholder {
+    display: flex;
+    color: #6c6c6c;
+  }

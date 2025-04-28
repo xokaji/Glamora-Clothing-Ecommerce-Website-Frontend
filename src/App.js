@@ -16,6 +16,7 @@ import { GiftCards } from './pages/GiftCards/GiftCards';
 import { Accessories } from './pages/Accessories/Accessories';
 import Profile from './pages/Profile/Profile';
 import { CartProvider } from './context/CartContext';
+import { EditProfile } from './pages/EditProfile/EditProfile';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/womenProducts" element={<Women />} />
           <Route path="/accessories" element={<Accessories/>} />
           <Route path="/gifts" element={<GiftCards />} />
+          <Route path="/editProfile" element={<EditProfile />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
         <Footer />

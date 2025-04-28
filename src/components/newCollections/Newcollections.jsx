@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./newcollections.css";
-import { getMostRecentProductsByCategory } from "../../services/api"; // Update the import
+import { getMostRecentProductsByCategory } from "../../services/api"; 
 
 export const Newcollections = () => {
   const [products, setProducts] = useState([]);
@@ -36,7 +36,7 @@ export const Newcollections = () => {
   return (
     <div className="home">
       <p>Recent Men+Stock</p>
-      <div className="productGrid">
+      <div className="productGrid2">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
             <img

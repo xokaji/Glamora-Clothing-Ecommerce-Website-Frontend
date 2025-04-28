@@ -36,7 +36,7 @@ export const Popular = () => {
   return (
     <div className="home">
       <p id="newWomen">Recent Women+Stock</p>
-      <div className="productGrid">
+      <div className="productGrid2">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
             <img

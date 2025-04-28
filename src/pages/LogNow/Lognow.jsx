@@ -80,9 +80,20 @@ export const Lognow = () => {
           {userData.phone && <p><strong>Phone:</strong> {userData.phone}</p>}
           {userData.address && <p><strong>Address:</strong> {userData.address}</p>}
         </div>
+        <div className="buttonProfile">
         <button onClick={handleLogout} className="logout-btn">
           Logout
         </button>
+        <button 
+        onClick={() => navigate('/editProfile')} 
+        className="edit-btn"
+      >
+        Edit
+      </button>
+        </div>
+        
+
+       
       </div>
     );
   }

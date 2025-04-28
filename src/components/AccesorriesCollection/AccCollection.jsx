@@ -36,7 +36,7 @@ export const AccCollection = () => {
   return (
     <div className="home">
       <p> Accessories+New Stock</p>
-      <div className="productGrid">
+      <div className="productGrid2">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
             <img

@@ -36,7 +36,7 @@ export const Gifts = () => {
   return (
     <div className="home">
       <p>Gift Card Offers</p>
-      <div className="productGrid">
+      <div className="productGrid2">
         {products.map((product) => (
           <Link to={`/product/${product.productId}`} key={product.productId} className="productCard">
             <img
