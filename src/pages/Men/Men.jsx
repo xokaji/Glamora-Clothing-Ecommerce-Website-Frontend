@@ -62,7 +62,7 @@ export const Men = () => {
 
   return (
     <div className="home">
-      {/* Search Bar */}
+      {}
       <div className="searchBarContainer">
         <input
           type="text"
@@ -73,7 +73,7 @@ export const Men = () => {
         />
       </div>
 
-      {/* <h1>Accessories Collection</h1> */}
+      {}
       <div className="productGrid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (

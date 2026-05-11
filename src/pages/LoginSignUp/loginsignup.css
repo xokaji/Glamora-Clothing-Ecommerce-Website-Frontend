@@ -2,7 +2,7 @@
     width: 100%;
     padding-top: 100px;
     padding-bottom: 100px;
-    background: #ffe2e2;
+    background: #cccccc;
 }
 
 .loginSignUp hr{
@@ -58,7 +58,7 @@
     height:42px;
     color: white;
     padding: 10px;
-    background: #ff4141;
+    background: #ff6600;
     margin-top: 30px;
     border: none;
     font-size: 20px;
@@ -69,7 +69,7 @@
 
 .secondBtn{
     text-decoration: none;
-    color: #ff4141 ;
+    color: #ff6600 ;
 }
 .loginsignup-login{
     margin-top: 20px;
@@ -79,7 +79,7 @@
 }
 
 .loginsignup-login span{
-    color: #ff4141;
+    color: #ff6600;
     font-weight: 600;
 }
 

@@ -1,86 +1,90 @@
-
 .edit-profile-container {
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 600px;
-    margin: 110px auto;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+  margin: 110px auto 40px;
+  border: 1px solid #ddd;
+}
+
+.edit-profile-heading {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #161616;
+}
+
+.edit-profile-form-group {
+  margin-bottom: 20px;
+}
+
+.edit-profile-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+  font-weight: 600;
+}
+
+.edit-profile-input,
+.edit-profile-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.edit-profile-input:focus,
+.edit-profile-select:focus {
+  outline: none;
+  border-color: #ff4a57;
+}
+
+.edit-profile-error-message {
+  color: #ff4a57;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.edit-profile-submit-btn {
+  background-color: #161616;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.edit-profile-submit-btn:hover {
+  background-color: #ff4a57;
+}
+
+.edit-profile-submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .edit-profile-container {
+    padding: 20px;
+    width: 90%;
   }
-  
+
   .edit-profile-heading {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    font-size: 20px;
   }
-  
-  .edit-profile-form-group {
-    margin-bottom: 20px;
-  }
-  
-  .edit-profile-label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: block;
-    color: #333;
-  }
-  
-  .edit-profile-input, .edit-profile-select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+  .edit-profile-input,
+  .edit-profile-select {
     font-size: 14px;
-    margin-top: 5px;
-    box-sizing: border-box;
   }
-  
-  .edit-profile-input:focus, .edit-profile-select:focus {
-    outline: none;
-    border-color: #f44336;
-  }
-  
-  .edit-profile-error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  .edit-profile-submit-btn {
-    background-color: #484848;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .edit-profile-submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .edit-profile-submit-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  @media (max-width: 768px) {
-    .edit-profile-container {
-      padding: 20px;
-      width: 90%;
-    }
-  
-    .edit-profile-heading {
-      font-size: 20px;
-    }
-  
-    .edit-profile-input, .edit-profile-select {
-      font-size: 14px;
-    }
-  }
-  
+}

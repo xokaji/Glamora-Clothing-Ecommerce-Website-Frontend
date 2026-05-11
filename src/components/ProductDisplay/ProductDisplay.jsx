@@ -73,7 +73,7 @@ const ProductDisplay = () => {
         <p className="product-price">LKR {product.productPrice}</p>
         <p className="product-desc">{product.productDescription}</p>
 
-        {/* <p className="product-color">Available Color: Jet Black</p> */}
+        {}
 
         <p className="product-size">Available Size:</p>
         <div className="size-options">

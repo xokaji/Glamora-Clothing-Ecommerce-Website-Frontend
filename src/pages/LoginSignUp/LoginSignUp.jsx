@@ -21,10 +21,10 @@ export const LoginSignUp = () => {
 
     try {
 
-      const response = await axios.post('http://localhost:5029/api/Account/register', {
-        Name: name, 
-        Email: email,
-        PasswordHash: password,
+      await axios.post('http://localhost:5029/api/Account/register', {
+        name,
+        email,
+        passwordHash: password,
       });
 
      

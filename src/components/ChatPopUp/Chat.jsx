@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import "./chat.css";
 
-// Updated to call your backend
+
 const getChatResponse = async (userMessage) => {
   try {
     const response = await fetch("http://localhost:5029/api/chat/GetResponse", {

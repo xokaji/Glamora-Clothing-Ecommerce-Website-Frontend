@@ -16,9 +16,13 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5039/api/products", product, {
-                headers: { "Content-Type": "application/json" },
-            });
+            const response = await axios.post(
+                "http://localhost:5029/api/product",
+                product,
+                {
+                    headers: { "Content-Type": "application/json" },
+                },
+            );
             alert("Product added successfully!");
             setProduct({ name: "", category: "", price: "", stock: "" }); // Reset form
         } catch (error) {

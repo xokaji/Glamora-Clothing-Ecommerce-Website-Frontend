@@ -152,7 +152,7 @@
   background-color: #ff4141;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .name-fields, .city-fields {
     flex-direction: column;

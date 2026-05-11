@@ -32,14 +32,14 @@ export const Women = () => {
   }, []);
 
   useEffect(() => {
-    // Filter products based on the search query
+    
     if (searchQuery.trim()) {
       const filtered = products.filter(product =>
         product.productName.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredProducts(filtered);
     } else {
-      setFilteredProducts(products); // If search is empty, show all products
+      setFilteredProducts(products); 
     }
   }, [searchQuery, products]);
 
@@ -62,7 +62,7 @@ export const Women = () => {
 
   return (
     <div className="home">
-      {/* Search Bar */}
+      {}
       <div className="searchBarContainer">
         <input
           type="text"
@@ -73,7 +73,7 @@ export const Women = () => {
         />
       </div>
       
-      {/* <h1>Women Collection</h1> */}
+      {}
       <div className="productGrid">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (

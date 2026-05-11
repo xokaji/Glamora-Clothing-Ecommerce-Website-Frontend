@@ -68,12 +68,16 @@ const Profile = () => {
     setError('');
 
     try {
-      await axios.put('http://localhost:5029/api/Account/profile', user, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
+      await axios.put(
+        'http://localhost:5029/api/Account/profile',
+        user,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
         }
-      });
+      );
       setEditing(false);
     } catch (error) {
       console.error('Update error:', error);
@@ -102,7 +106,7 @@ const Profile = () => {
               className="cancel-button"
               onClick={() => {
                 setEditing(false);
-                fetchProfile(); // Reset any changes
+                fetchProfile(); 
               }}
             >
               Cancel
@@ -137,7 +141,7 @@ const Profile = () => {
 
         <div className="profile-row">
           <label>Email:</label>
-          <p>{user.email}</p> {/* Email typically isn't editable */}
+          <p>{user.email}</p> {}
         </div>
 
         <div className="profile-row">

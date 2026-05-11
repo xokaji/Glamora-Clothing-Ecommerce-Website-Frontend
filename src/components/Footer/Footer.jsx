@@ -52,7 +52,7 @@ export const Footer = () => (
 
         
         <div className="footer-right">
-          <button className="blog-btn">GLAMORA CHARITY</button>
+          <button className="blog-btn">SOBA FASHION LAND</button>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ export const Footer = () => (
       </div>
 
     
-      <p className="copyright">© 2025 | Glamora | All Rights Reserved.</p>
+      <p className="copyright">© 2025 | Soba Fashions | All Rights Reserved.</p>
     </div>
   </footer>
 );

@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5029/api';  // Replace with your actual API URL
+const API_URL = 'http://localhost:5029/api';  
 
-// Function to check if JWT token is expired
+
 const isTokenExpired = (token) => {
   if (!token) return true;
   const payload = JSON.parse(atob(token.split('.')[1]));
-  const expiry = payload.exp * 1000;  // Convert expiration to milliseconds
+  const expiry = payload.exp * 1000;  
   return Date.now() > expiry;
 };
 

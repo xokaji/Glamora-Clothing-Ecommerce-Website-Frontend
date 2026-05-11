@@ -166,11 +166,11 @@ export const addItemToCart = async (productId, quantity) => {
   }
 };
 
-///////////////
 
 
 
-// Get product by name
+
+
 export const getProductByName = async (productName) => {
   try {
     const response = await axios.get(`${API_URL}/name/${productName}`);
@@ -183,12 +183,12 @@ export const getProductByName = async (productName) => {
 
 
 
-// Create a new product
+
 export const createProduct = async (productData) => {
   try {
     const response = await axios.post(API_URL, productData, {
       headers: {
-        'Content-Type': 'multipart/form-data', // Assuming you're sending data in form-data format
+        'Content-Type': 'multipart/form-data', 
       },
     });
     return response.data;
@@ -198,12 +198,12 @@ export const createProduct = async (productData) => {
   }
 };
 
-// Update an existing product
+
 export const updateProduct = async (productId, productData) => {
   try {
     const response = await axios.put(`${API_URL}/${productId}`, productData, {
       headers: {
-        'Content-Type': 'multipart/form-data', // Assuming you're sending data in form-data format
+        'Content-Type': 'multipart/form-data', 
       },
     });
     return response.data;
@@ -213,7 +213,7 @@ export const updateProduct = async (productId, productData) => {
   }
 };
 
-// Delete a product by ID
+
 export const deleteProduct = async (productId) => {
   try {
     const response = await axios.delete(`${API_URL}/${productId}`);
@@ -224,7 +224,7 @@ export const deleteProduct = async (productId) => {
   }
 };
 
-// Apply a discount to a product
+
 export const applyDiscount = async (productId, discount) => {
   try {
     const response = await axios.put(`${API_URL}/discount/${productId}/${discount}`);
@@ -235,7 +235,7 @@ export const applyDiscount = async (productId, discount) => {
   }
 };
 
-// Search products based on filters
+
 export const searchProducts = async (filters) => {
   try {
     const { name, minPrice, maxPrice, categoryId } = filters;
@@ -249,7 +249,7 @@ export const searchProducts = async (filters) => {
   }
 };
 
-// Get new women products (limit = 1)
+
 export const getNewWomenProducts = async () => {
   try {
     const response = await axios.get(`${API_URL}/new-women`);
@@ -261,7 +261,7 @@ export const getNewWomenProducts = async () => {
 };
 
 
-// Update product quantity
+
 export const updateProductQuantity = async (productId, quantityChange) => {
   try {
     const response = await axios.put(`${API_URL}/update-quantity/${productId}`, quantityChange);
@@ -272,7 +272,7 @@ export const updateProductQuantity = async (productId, quantityChange) => {
   }
 };
 
-// Decrease product quantity
+
 export const decreaseProductQuantity = async (productId, quantity) => {
   try {
     const response = await axios.put(`${API_URL}/decrease-quantity/${productId}`, quantity);
