@@ -1,42 +1,39 @@
-import React, { useState } from 'react';
-import './loginsignup.css';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import "./loginsignup.css";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const LoginSignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [agree, setAgree] = useState(false); 
-  const [error, setError] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [agree, setAgree] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (!agree) {
-      setError('You must agree to the terms of use and privacy policy.');
+      setError("You must agree to the terms of use and privacy policy.");
       return;
     }
 
     try {
-
-      await axios.post('http://localhost:5029/api/Account/register', {
+      await axios.post("http://localhost:5029/api/Account/register", {
         name,
         email,
         passwordHash: password,
       });
 
-     
-      navigate('/lognow');
+      navigate("/lognow");
     } catch (err) {
-
-      setError('Registration failed. Please try again.');
+      setError("Registration failed. Please try again.");
     }
   };
 
   return (
-    <div className='loginSignUp'>
+    <div className="loginSignUp">
       <div className="loginSignUpContainer">
         <h1>Sign Up</h1>
         <hr />
@@ -44,21 +41,21 @@ export const LoginSignUp = () => {
           <div className="login-signup-feilds">
             <input
               type="text"
-              placeholder='Your Name'
+              placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
             <input
               type="email"
-              placeholder='Your Email'
+              placeholder="Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
-              type="password" 
-              placeholder='Password'
+              type="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -66,12 +63,16 @@ export const LoginSignUp = () => {
           </div>
           {error && <p className="error-message">{error}</p>}
           <div className="btnLog">
-            <button type="submit" className='mainBtn'>Continue</button>
+            <button type="submit" className="mainBtn">
+              Continue
+            </button>
           </div>
         </form>
-        <p className='loginsignup-login'>
-          Already have an Account?{' '}
-          <Link className="secondBtn" to="/lognow">Login </Link>
+        <p className="loginsignup-login">
+          Already have an Account?{" "}
+          <Link className="secondBtn" to="/lognow">
+            Login{" "}
+          </Link>
         </p>
         <div className="loginsignup-agree">
           <input

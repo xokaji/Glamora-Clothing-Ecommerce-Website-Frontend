@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './profile.css'; 
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./profile.css";
 
 const Profile = () => {
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    city: '',
-    address: '',
-    phone: ''
+    name: "",
+    email: "",
+    city: "",
+    address: "",
+    phone: "",
   });
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,35 +21,37 @@ const Profile = () => {
   }, []);
 
   const fetchProfile = async () => {
-    const token = localStorage.getItem('jwtToken');
-    
+    const token = localStorage.getItem("jwtToken");
+
     if (!token) {
-      navigate('/login');
+      navigate("/login");
       return;
     }
 
     try {
-      const response = await axios.get('http://localhost:5029/api/Account/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-  
+      const response = await axios.get(
+        "http://localhost:5029/api/Account/profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
       setUser({
-        name: response.data.name || response.data.Name || '',
-        email: response.data.email || response.data.Email || '',
-        city: response.data.city || response.data.Profile?.city || '',
-        address: response.data.address || response.data.Profile?.address || '',
-        phone: response.data.phone || response.data.Profile?.phoneNumber || ''
+        name: response.data.name || response.data.Name || "",
+        email: response.data.email || response.data.Email || "",
+        city: response.data.city || response.data.Profile?.city || "",
+        address: response.data.address || response.data.Profile?.address || "",
+        phone: response.data.phone || response.data.Profile?.phoneNumber || "",
       });
-      
     } catch (error) {
-      console.error('Profile fetch error:', error);
-      setError('Failed to load profile');
-      
+      console.error("Profile fetch error:", error);
+      setError("Failed to load profile");
+
       if (error.response?.status === 401) {
-        localStorage.removeItem('jwtToken');
-        navigate('/login');
+        localStorage.removeItem("jwtToken");
+        navigate("/login");
       }
     } finally {
       setLoading(false);
@@ -59,29 +60,25 @@ const Profile = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser(prev => ({ ...prev, [name]: value }));
+    setUser((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSave = async () => {
-    const token = localStorage.getItem('jwtToken');
+    const token = localStorage.getItem("jwtToken");
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      await axios.put(
-        'http://localhost:5029/api/Account/profile',
-        user,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
+      await axios.put("http://localhost:5029/api/Account/profile", user, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setEditing(false);
     } catch (error) {
-      console.error('Update error:', error);
-      setError(error.response?.data?.message || 'Failed to update profile');
+      console.error("Update error:", error);
+      setError(error.response?.data?.message || "Failed to update profile");
     } finally {
       setLoading(false);
     }
@@ -94,29 +91,26 @@ const Profile = () => {
       <div className="profile-header">
         <h2>My Profile</h2>
         {!editing ? (
-          <button 
-            className="edit-button"
-            onClick={() => setEditing(true)}
-          >
+          <button className="edit-button" onClick={() => setEditing(true)}>
             Edit Profile
           </button>
         ) : (
           <div className="action-buttons">
-            <button 
+            <button
               className="cancel-button"
               onClick={() => {
                 setEditing(false);
-                fetchProfile(); 
+                fetchProfile();
               }}
             >
               Cancel
             </button>
-            <button 
+            <button
               className="save-button"
               onClick={handleSave}
               disabled={loading}
             >
-              {loading ? 'Saving...' : 'Save Changes'}
+              {loading ? "Saving..." : "Save Changes"}
             </button>
           </div>
         )}
@@ -155,7 +149,7 @@ const Profile = () => {
               placeholder="Enter your city"
             />
           ) : (
-            <p>{user.city || 'Not specified'}</p>
+            <p>{user.city || "Not specified"}</p>
           )}
         </div>
 
@@ -169,7 +163,7 @@ const Profile = () => {
               placeholder="Enter your address"
             />
           ) : (
-            <p>{user.address || 'Not specified'}</p>
+            <p>{user.address || "Not specified"}</p>
           )}
         </div>
 
@@ -184,7 +178,7 @@ const Profile = () => {
               placeholder="Enter your phone number"
             />
           ) : (
-            <p>{user.phone || 'Not specified'}</p>
+            <p>{user.phone || "Not specified"}</p>
           )}
         </div>
       </div>
